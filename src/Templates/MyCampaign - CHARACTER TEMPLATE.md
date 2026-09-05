@@ -19,8 +19,10 @@ cssclasses:
 | ![[MyCampaign - CHARACTER TEMPLATE - Notes#Ideals]] | ![[MyCampaign - CHARACTER TEMPLATE - Notes#Bonds]] |
 | ![[MyCampaign - CHARACTER TEMPLATE - Notes#Traits]] | ![[MyCampaign - CHARACTER TEMPLATE - Notes#Flaws]] |
 
+[[#CHARACTER TEMPLATE|back to top]]
+
+
 ![[MyCampaign - CHARACTER TEMPLATE - Notes#Highlights]]
 
+[[#CHARACTER TEMPLATE|back to top]]
 
-
-[^Notes]: [[MyCampaign - CHARACTER TEMPLATE - Notes]]
