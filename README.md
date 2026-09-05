@@ -108,7 +108,8 @@ This is a very basic little project and set of scripts with limited scope that
 I intend to be _very_ easy to install and use. I don't play 5e often enough so
 there might be bugs or ill-thought design decisions.
 
-Please feel free to contribute by [submitting an issue]() or
+Please feel free to contribute by
+[submitting an issue](https://github.com/artfulreggie/5eSheets/issues/new) or
 [contacting me](#-contacts).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
