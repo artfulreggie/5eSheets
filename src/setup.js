@@ -27,7 +27,7 @@ const MAX_NAME_LENGTH = 80;
 const FILES = [
   "Templates/MyCampaign - CHARACTER TEMPLATE.md",
   "MyCampaign - Instructions.md",
-  "MyCampaign - Player Characters.md",
+  "MyCampaign - Party.md",
   "create-character.js",
   "Templates/MyCampaign - CHARACTER TEMPLATE - Notes.md",
   "Templates/MyCampaign - CHARACTER TEMPLATE - Data.md",

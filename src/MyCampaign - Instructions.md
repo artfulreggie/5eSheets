@@ -26,7 +26,7 @@ Character data is stored in **Character Notes** files found in
 
 At the top of these files you will find data entry fields for adding
 information about your campaign's characters. You will only need to entry info
-for stats that are ordrinarily concocted by hand (eg ability scores). Character
+for stats that are ordinarily concocted by hand (eg ability scores). Character
 info that is derived from these values will be calculated dynamically.
 
 **Do not** edit the **Character Data** files directly. The Notes file is for
@@ -47,7 +47,7 @@ You can embed specific sections in the **Character Dashboard** using
 ### Dashboards
 After cloning the original installation files for a new campaign and creating
 the campaign's first character, you will notice a set of files:
-- `<Campaign> - Player Characters`
+- `<Campaign> - Party`
 - `<Campaign> - <Character Name>`
 
 These are dashboards summarizing and calculating values dynamically from the
@@ -62,6 +62,7 @@ GMing.
 
 | Kind of File | Location | Purpose |
 | :--- | :--- | :--- |
+| Party Dashboard | `MyCampaign - Party` | Dashboard for the party - basic stats in compact form |
 | Character Dashboard | `MyCampaign - <Name>` | Dashboard for a character — pertinent data at a glance |
 | Character Notes | `Character Info/MyCampaign - <Name> - Notes` | Character sheet you edit and read |
 | Character Data | `Character Info/MyCampaign - <Name> - Data` | Behind-the-scenes data storage (do **not** edit directly) |

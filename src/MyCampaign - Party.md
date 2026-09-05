@@ -1,8 +1,8 @@
 ---
 cssclasses:
-  - dnd-player-characters
+  - dnd-party
 ---
-# Player Characters
+# Party
 ## Stats
 ### Abilities
 ![[MyCampaign - Base - Abilities.base#Modifiers Table]]

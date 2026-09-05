@@ -73,27 +73,27 @@
   display: none !important;
 }
 
-/* === PLAYER CHARACTERS DASHBOARD (dnd-player-characters) === */
+/* === PARTY DASHBOARD === */
 
 /* Hide toolbar, keep header row and data rows */
-.dnd-player-characters .bases-header {
+.dnd-party .bases-header {
   display: none !important;
 }
 
 /* Unwrap embed containers */
-.dnd-player-characters .internal-embed.bases-embed,
-.dnd-player-characters .internal-embed:not(.markdown-embed):not(.image-embed),
-.dnd-player-characters .bases-embed {
+.dnd-party .internal-embed.bases-embed,
+.dnd-party .internal-embed:not(.markdown-embed):not(.image-embed),
+.dnd-party .bases-embed {
   display: contents !important;
 }
 
 /* Tables fit content width, not full page ewwww */
-.dnd-player-characters .bases-view[data-view-type="table"] .bases-thead,
-.dnd-player-characters .bases-view[data-view-type="table"] .bases-table-container {
+.dnd-party .bases-view[data-view-type="table"] .bases-thead,
+.dnd-party .bases-view[data-view-type="table"] .bases-table-container {
   width: fit-content !important;
 }
 
 /* Hide SNW reference counts to look pretty */
-.dnd-player-characters .snw-embed-preview {
+.dnd-party .snw-embed-preview {
   display: none !important;
 }
