@@ -33,38 +33,37 @@
   display: contents !important;
 }
 
-/* === HIT DIE INLINE ===
-   Global selectors — no ancestor constraints.
-   Works regardless of wrapper class or view mode. */
-.bases-view[data-view-name="Filtered Hit Die"] {
+/* === INLINE STAT BLOCKS === */
+.bases-view:is(
+  [data-view-name="Filtered Hit Die"],
+  [data-view-name="Filtered Passive Insight"],
+  [data-view-name="Filtered Passive Investigation"],
+  [data-view-name="Filtered Passive Perception"]
+) {
   display: inline-block !important;
   vertical-align: middle;
-}
 
-.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-container {
-  height: 28px !important;
-  width: 80px !important;
-}
+  .bases-cards-container {
+    height: 28px !important;
+    width: 80px !important;
+  }
 
-.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-group {
-  height: 28px !important;
-  top: 0 !important;
-}
+  .bases-cards-group,
+  .bases-cards-item {
+    height: 28px !important;
+    top: 0 !important;
+  }
 
-.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-item {
-  height: 28px !important;
-  top: 0 !important;
-}
+  .bases-cards-property.mod-title {
+    top: 0 !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
 
-.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-property.mod-title {
-  top: 0 !important;
-  height: 28px !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-label {
-  display: none !important;
+  .bases-cards-label {
+    display: none !important;
+  }
 }
 
 /* Hide SNW reference counts in dnd-sheet tables */

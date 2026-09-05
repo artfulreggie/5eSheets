@@ -31,6 +31,9 @@ formulas:
   sleight_of_hand: formula.dex_mod + if(z_dnd_prof_sleight_of_hand, formula.prof_bonus, 0) + if(z_dnd_exp_sleight_of_hand, formula.prof_bonus, 0)
   stealth: formula.dex_mod + if(z_dnd_prof_stealth, formula.prof_bonus, 0) + if(z_dnd_exp_stealth, formula.prof_bonus, 0)
   survival: formula.wis_mod + if(z_dnd_prof_survival, formula.prof_bonus, 0) + if(z_dnd_exp_survival, formula.prof_bonus, 0)
+  passive_insight: 10 + formula.wis_mod + if(z_dnd_prof_insight, formula.prof_bonus, 0)
+  passive_investigation: 10 + formula.int_mod + if(z_dnd_prof_investigation, formula.prof_bonus, 0)
+  passive_perception: 10 + formula.wis_mod + if(z_dnd_prof_perception, formula.prof_bonus, 0)
 properties:
   z_dnd_name:
     displayName: Character
@@ -72,6 +75,12 @@ properties:
     displayName: Survival
   note.z_dnd_name:
     displayName: Character
+  formula.passive_insight:
+    displayName: Passive Insight
+  formula.passive_investigation:
+    displayName: Passive Investigation
+  formula.passive_perception:
+    displayName: Passive Perception
 views:
   - type: table
     name: Skills
@@ -243,3 +252,28 @@ views:
       - formula.stealth
       - formula.survival
     cardSize: 110
+  - type: cards
+    name: Filtered Passive Insight
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.passive_insight
+    cardSize: 50
+  - type: cards
+    name: Filtered Passive Investigation
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.passive_investigation
+    cardSize: 50
+  - type: cards
+    name: Filtered Passive Perception
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.passive_perception
+    cardSize: 50
+
