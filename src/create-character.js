@@ -38,12 +38,12 @@ const DATA_DEFAULTS = Object.freeze({
   z_dnd_level: 1,
   z_dnd_size: "medium",
   z_dnd_languages: "Common",
-  z_dnd_str: 10,
-  z_dnd_dex: 10,
-  z_dnd_con: 10,
-  z_dnd_int: 10,
-  z_dnd_wis: 10,
-  z_dnd_cha: 10,
+  z_dnd_str: 8,
+  z_dnd_dex: 8,
+  z_dnd_con: 8,
+  z_dnd_int: 8,
+  z_dnd_wis: 8,
+  z_dnd_cha: 8,
 });
 
 /**
