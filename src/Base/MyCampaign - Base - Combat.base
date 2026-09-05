@@ -143,7 +143,7 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.hit_die
-    cardSize: 100
+    cardSize: 45
   - type: cards
     name: Filtered Spell DC
     filters:
@@ -151,7 +151,7 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.spell_dc
-    cardSize: 80
+    cardSize: 45
   - type: cards
     name: Filtered Spell Hit
     filters:
@@ -159,4 +159,4 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.spell_atk
-    cardSize: 80
+    cardSize: 45

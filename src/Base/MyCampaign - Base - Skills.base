@@ -259,7 +259,7 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.passive_insight
-    cardSize: 50
+    cardSize: 45
   - type: cards
     name: Filtered Passive Investigation
     filters:
@@ -267,7 +267,7 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.passive_investigation
-    cardSize: 50
+    cardSize: 45
   - type: cards
     name: Filtered Passive Perception
     filters:
@@ -275,5 +275,5 @@ views:
         - file.name.contains(this.file.name)
     order:
       - formula.passive_perception
-    cardSize: 50
+    cardSize: 45
 
