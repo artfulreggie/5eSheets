@@ -1,0 +1,98 @@
+.metadata-property[data-property-key^="z_dnd_"] {
+  display: none;
+}
+
+/* === COMPACT BASES IN DND SHEET TABLE CELLS === */
+
+/* Hide toolbar — broad selector covers both view modes */
+.dnd-sheet td .internal-embed.bases-embed .bases-header,
+.dnd-sheet td .bases-header {
+  display: none !important;
+}
+
+/* Compact cards */
+.dnd-sheet td .internal-embed.bases-embed .bases-cards-container,
+.dnd-sheet td .bases-cards-container {
+  gap: 0;
+  padding: 0;
+}
+
+.dnd-sheet td .internal-embed.bases-embed .bases-card,
+.dnd-sheet td .bases-card {
+  padding: 4px 8px;
+}
+
+/* === EMBED UNWRAPPING ===
+   display:contents removes the wrapper box from layout.
+   Children become layout children of <td> directly.
+   Uses multiple class selectors to cover both view modes
+   (Reading View may use different classes on the wrapper). */
+.dnd-sheet td .internal-embed.bases-embed,
+.dnd-sheet td .internal-embed:not(.markdown-embed):not(.image-embed),
+.dnd-sheet td .bases-embed {
+  display: contents !important;
+}
+
+/* === HIT DIE INLINE ===
+   Global selectors — no ancestor constraints.
+   Works regardless of wrapper class or view mode. */
+.bases-view[data-view-name="Filtered Hit Die"] {
+  display: inline-block !important;
+  vertical-align: middle;
+}
+
+.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-container {
+  height: 28px !important;
+  width: 80px !important;
+}
+
+.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-group {
+  height: 28px !important;
+  top: 0 !important;
+}
+
+.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-item {
+  height: 28px !important;
+  top: 0 !important;
+}
+
+.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-property.mod-title {
+  top: 0 !important;
+  height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.bases-view[data-view-name="Filtered Hit Die"] .bases-cards-label {
+  display: none !important;
+}
+
+/* Hide SNW reference counts in dnd-sheet tables */
+.dnd-sheet td .snw-embed-preview {
+  display: none !important;
+}
+
+/* === PLAYER CHARACTERS DASHBOARD (dnd-player-characters) === */
+
+/* Hide toolbar, keep header row and data rows */
+.dnd-player-characters .bases-header {
+  display: none !important;
+}
+
+/* Unwrap embed containers */
+.dnd-player-characters .internal-embed.bases-embed,
+.dnd-player-characters .internal-embed:not(.markdown-embed):not(.image-embed),
+.dnd-player-characters .bases-embed {
+  display: contents !important;
+}
+
+/* Tables fit content width, not full page ewwww */
+.dnd-player-characters .bases-view[data-view-type="table"] .bases-thead,
+.dnd-player-characters .bases-view[data-view-type="table"] .bases-table-container {
+  width: fit-content !important;
+}
+
+/* Hide SNW reference counts to look pretty */
+.dnd-player-characters .snw-embed-preview {
+  display: none !important;
+}

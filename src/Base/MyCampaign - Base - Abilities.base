@@ -1,0 +1,113 @@
+filters:
+  and:
+    - file.name.startsWith("MyCampaign - ")
+    - file.name.endsWith(" - Data")
+    - file.folder.endsWith("Character Info")
+    - not:
+        - file.name.contains("TEMPLATE")
+formulas:
+  str_mod: ((z_dnd_str - 10) / 2).floor()
+  dex_mod: ((z_dnd_dex - 10) / 2).floor()
+  con_mod: ((z_dnd_con - 10) / 2).floor()
+  int_mod: ((z_dnd_int - 10) / 2).floor()
+  wis_mod: ((z_dnd_wis - 10) / 2).floor()
+  cha_mod: ((z_dnd_cha - 10) / 2).floor()
+properties:
+  z_dnd_name:
+    displayName: Character
+  z_dnd_str:
+    displayName: STR (score)
+  z_dnd_dex:
+    displayName: DEX (score)
+  z_dnd_con:
+    displayName: CON (score)
+  z_dnd_int:
+    displayName: INT (score)
+  z_dnd_wis:
+    displayName: WIS (score)
+  z_dnd_cha:
+    displayName: CHA (score)
+  formula.str_mod:
+    displayName: STR
+  formula.dex_mod:
+    displayName: DEX
+  formula.con_mod:
+    displayName: CON
+  formula.int_mod:
+    displayName: INT
+  formula.wis_mod:
+    displayName: WIS
+  formula.cha_mod:
+    displayName: CHA
+  note.z_dnd_name:
+    displayName: Character
+  note.z_dnd_str:
+    displayName: STR (score)
+  note.z_dnd_dex:
+    displayName: DEX (score)
+  note.z_dnd_con:
+    displayName: CON (score)
+  note.z_dnd_int:
+    displayName: INT (score)
+  note.z_dnd_wis:
+    displayName: WIS (score)
+  note.z_dnd_cha:
+    displayName: CHA (score)
+views:
+  - type: table
+    name: Ability Scores
+    order:
+      - z_dnd_name
+      - z_dnd_str
+      - formula.str_mod
+      - z_dnd_dex
+      - formula.dex_mod
+      - z_dnd_con
+      - formula.con_mod
+      - z_dnd_int
+      - formula.int_mod
+      - z_dnd_wis
+      - formula.wis_mod
+      - z_dnd_cha
+      - formula.cha_mod
+    sort:
+      - property: z_dnd_wis
+        direction: ASC
+  - type: table
+    name: Modifiers Table
+    order:
+      - z_dnd_name
+      - formula.cha_mod
+      - formula.con_mod
+      - formula.dex_mod
+      - formula.int_mod
+      - formula.str_mod
+      - formula.wis_mod
+    columnSize:
+      formula.cha_mod: 62
+      formula.wis_mod: 58
+  - type: cards
+    name: Modifiers Cards
+    order:
+      - file.backlinks
+      - formula.cha_mod
+      - formula.con_mod
+      - formula.dex_mod
+      - formula.int_mod
+      - formula.str_mod
+      - formula.wis_mod
+    cardSize: 150
+  - type: cards
+    name: Filtered Modifiers Cards
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - file.backlinks
+      - formula.cha_mod
+      - formula.con_mod
+      - formula.dex_mod
+      - formula.int_mod
+      - formula.str_mod
+      - formula.wis_mod
+    cardSize: 150

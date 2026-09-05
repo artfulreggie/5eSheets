@@ -1,0 +1,245 @@
+filters:
+  and:
+    - file.name.startsWith("MyCampaign - ")
+    - file.name.endsWith(" - Data")
+    - file.folder.endsWith("Character Info")
+    - not:
+        - file.name.contains("TEMPLATE")
+formulas:
+  prof_bonus: 1 + (z_dnd_level / 4).ceil()
+  str_mod: ((z_dnd_str - 10) / 2).floor()
+  dex_mod: ((z_dnd_dex - 10) / 2).floor()
+  con_mod: ((z_dnd_con - 10) / 2).floor()
+  int_mod: ((z_dnd_int - 10) / 2).floor()
+  wis_mod: ((z_dnd_wis - 10) / 2).floor()
+  cha_mod: ((z_dnd_cha - 10) / 2).floor()
+  acrobatics: formula.dex_mod + if(z_dnd_prof_acrobatics, formula.prof_bonus, 0) + if(z_dnd_exp_acrobatics, formula.prof_bonus, 0)
+  animal_handling: formula.wis_mod + if(z_dnd_prof_animal_handling, formula.prof_bonus, 0) + if(z_dnd_exp_animal_handling, formula.prof_bonus, 0)
+  arcana: formula.int_mod + if(z_dnd_prof_arcana, formula.prof_bonus, 0) + if(z_dnd_exp_arcana, formula.prof_bonus, 0)
+  athletics: formula.str_mod + if(z_dnd_prof_athletics, formula.prof_bonus, 0) + if(z_dnd_exp_athletics, formula.prof_bonus, 0)
+  deception: formula.cha_mod + if(z_dnd_prof_deception, formula.prof_bonus, 0) + if(z_dnd_exp_deception, formula.prof_bonus, 0)
+  history: formula.int_mod + if(z_dnd_prof_history, formula.prof_bonus, 0) + if(z_dnd_exp_history, formula.prof_bonus, 0)
+  insight: formula.wis_mod + if(z_dnd_prof_insight, formula.prof_bonus, 0) + if(z_dnd_exp_insight, formula.prof_bonus, 0)
+  intimidation: formula.cha_mod + if(z_dnd_prof_intimidation, formula.prof_bonus, 0) + if(z_dnd_exp_intimidation, formula.prof_bonus, 0)
+  investigation: formula.int_mod + if(z_dnd_prof_investigation, formula.prof_bonus, 0) + if(z_dnd_exp_investigation, formula.prof_bonus, 0)
+  medicine: formula.wis_mod + if(z_dnd_prof_medicine, formula.prof_bonus, 0) + if(z_dnd_exp_medicine, formula.prof_bonus, 0)
+  nature: formula.int_mod + if(z_dnd_prof_nature, formula.prof_bonus, 0) + if(z_dnd_exp_nature, formula.prof_bonus, 0)
+  perception: formula.wis_mod + if(z_dnd_prof_perception, formula.prof_bonus, 0) + if(z_dnd_exp_perception, formula.prof_bonus, 0)
+  performance: formula.cha_mod + if(z_dnd_prof_performance, formula.prof_bonus, 0) + if(z_dnd_exp_performance, formula.prof_bonus, 0)
+  persuasion: formula.cha_mod + if(z_dnd_prof_persuasion, formula.prof_bonus, 0) + if(z_dnd_exp_persuasion, formula.prof_bonus, 0)
+  religion: formula.int_mod + if(z_dnd_prof_religion, formula.prof_bonus, 0) + if(z_dnd_exp_religion, formula.prof_bonus, 0)
+  sleight_of_hand: formula.dex_mod + if(z_dnd_prof_sleight_of_hand, formula.prof_bonus, 0) + if(z_dnd_exp_sleight_of_hand, formula.prof_bonus, 0)
+  stealth: formula.dex_mod + if(z_dnd_prof_stealth, formula.prof_bonus, 0) + if(z_dnd_exp_stealth, formula.prof_bonus, 0)
+  survival: formula.wis_mod + if(z_dnd_prof_survival, formula.prof_bonus, 0) + if(z_dnd_exp_survival, formula.prof_bonus, 0)
+properties:
+  z_dnd_name:
+    displayName: Character
+  formula.acrobatics:
+    displayName: Acrobatics
+  formula.animal_handling:
+    displayName: Animal Handling
+  formula.arcana:
+    displayName: Arcana
+  formula.athletics:
+    displayName: Athletics
+  formula.deception:
+    displayName: Deception
+  formula.history:
+    displayName: History
+  formula.insight:
+    displayName: Insight
+  formula.intimidation:
+    displayName: Intimidation
+  formula.investigation:
+    displayName: Investigation
+  formula.medicine:
+    displayName: Medicine
+  formula.nature:
+    displayName: Nature
+  formula.perception:
+    displayName: Perception
+  formula.performance:
+    displayName: Performance
+  formula.persuasion:
+    displayName: Persuasion
+  formula.religion:
+    displayName: Religion
+  formula.sleight_of_hand:
+    displayName: Sleight of Hand
+  formula.stealth:
+    displayName: Stealth
+  formula.survival:
+    displayName: Survival
+  note.z_dnd_name:
+    displayName: Character
+views:
+  - type: table
+    name: Skills
+    order:
+      - z_dnd_name
+      - formula.acrobatics
+      - formula.animal_handling
+      - formula.arcana
+      - formula.athletics
+      - formula.deception
+      - formula.history
+      - formula.insight
+      - formula.intimidation
+      - formula.investigation
+      - formula.medicine
+      - formula.nature
+      - formula.perception
+      - formula.performance
+      - formula.persuasion
+      - formula.religion
+      - formula.sleight_of_hand
+      - formula.stealth
+      - formula.survival
+    sort:
+      - property: formula.acrobatics
+        direction: DESC
+      - property: formula.animal_handling
+        direction: DESC
+    columnSize:
+      formula.acrobatics: 72
+      formula.animal_handling: 82
+      formula.arcana: 55
+      formula.athletics: 58
+      formula.deception: 55
+      formula.history: 56
+      formula.insight: 51
+      formula.intimidation: 50
+      formula.investigation: 50
+      formula.medicine: 60
+      formula.nature: 54
+      formula.perception: 59
+      formula.performance: 59
+      formula.persuasion: 60
+      formula.religion: 53
+      formula.sleight_of_hand: 63
+      formula.stealth: 56
+      formula.survival: 56
+  - type: table
+    name: Column 1 Table
+    order:
+      - z_dnd_name
+      - formula.acrobatics
+      - formula.animal_handling
+      - formula.arcana
+      - formula.athletics
+      - formula.deception
+      - formula.history
+      - formula.insight
+      - formula.intimidation
+      - formula.investigation
+    columnSize:
+      formula.acrobatics: 53
+      formula.animal_handling: 61
+      formula.arcana: 54
+      formula.athletics: 52
+      formula.deception: 56
+      formula.history: 56
+      formula.insight: 48
+      formula.intimidation: 48
+      formula.investigation: 50
+  - type: table
+    name: Column 2 Table
+    order:
+      - z_dnd_name
+      - formula.medicine
+      - formula.nature
+      - formula.perception
+      - formula.performance
+      - formula.persuasion
+      - formula.religion
+      - formula.sleight_of_hand
+      - formula.stealth
+      - formula.survival
+    sort:
+      - property: formula.survival
+        direction: ASC
+    columnSize:
+      formula.medicine: 58
+      formula.nature: 52
+      formula.perception: 58
+      formula.performance: 58
+      formula.persuasion: 61
+      formula.religion: 54
+      formula.sleight_of_hand: 56
+      formula.stealth: 60
+      formula.survival: 73
+  - type: cards
+    name: Column 1 Card
+    order:
+      - file.backlinks
+      - formula.acrobatics
+      - formula.animal_handling
+      - formula.arcana
+      - formula.athletics
+      - formula.deception
+      - formula.history
+    cardSize: 110
+  - type: cards
+    name: Column 2 Card
+    order:
+      - file.backlinks
+      - formula.insight
+      - formula.intimidation
+      - formula.investigation
+      - formula.medicine
+      - formula.nature
+      - formula.perception
+    cardSize: 110
+  - type: cards
+    name: Column 3 Card
+    order:
+      - file.backlinks
+      - formula.performance
+      - formula.persuasion
+      - formula.religion
+      - formula.sleight_of_hand
+      - formula.stealth
+      - formula.survival
+    cardSize: 110
+  - type: cards
+    name: Filtered Column 1 Cards
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - file.backlinks
+      - formula.acrobatics
+      - formula.animal_handling
+      - formula.arcana
+      - formula.athletics
+      - formula.deception
+      - formula.history
+    cardSize: 110
+  - type: cards
+    name: Filtered Column 2 Cards
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - file.backlinks
+      - formula.insight
+      - formula.intimidation
+      - formula.investigation
+      - formula.medicine
+      - formula.nature
+      - formula.perception
+    cardSize: 110
+  - type: cards
+    name: Filtered Column 3 Cards
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - file.backlinks
+      - formula.performance
+      - formula.persuasion
+      - formula.religion
+      - formula.sleight_of_hand
+      - formula.stealth
+      - formula.survival
+    cardSize: 110

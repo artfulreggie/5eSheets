@@ -1,0 +1,77 @@
+name: check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Nothing here writes to the repo; the checks only read it.
+permissions:
+  contents: read
+
+# A new push to a branch makes the run already in flight pointless.
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Re-runs the same checks the pre-commit hook runs. To be sure, to be sure
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: node tools/run.mjs check
+
+  # Regression-tests the claim that the toolchain runs on all three platforms
+  portability:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: node tools/run.mjs setup
+      - run: node tools/run.mjs check
+
+  # Proves the hook path and the CI path agree
+  hook-parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - run: git add -A
+      - run: node tools/run.mjs pre-commit
+
+  # The commit-msg hook only guards machines that ran `make setup`, and
+  # --no-verify walks straight past it. This is the backstop.
+  commit-messages:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      # Passed through the environment, never interpolated into the shell.
+      - run: node tools/run.mjs check-commits "$BASE..$HEAD"
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}

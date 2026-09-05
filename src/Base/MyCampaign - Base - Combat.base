@@ -1,0 +1,146 @@
+filters:
+  and:
+    - file.name.startsWith("MyCampaign - ")
+    - file.name.endsWith(" - Data")
+    - file.folder.endsWith("Character Info")
+    - not:
+        - file.name.contains("TEMPLATE")
+formulas:
+  prof_bonus: 1 + (z_dnd_level / 4).ceil()
+  str_mod: ((z_dnd_str - 10) / 2).floor()
+  dex_mod: ((z_dnd_dex - 10) / 2).floor()
+  con_mod: ((z_dnd_con - 10) / 2).floor()
+  int_mod: ((z_dnd_int - 10) / 2).floor()
+  wis_mod: ((z_dnd_wis - 10) / 2).floor()
+  cha_mod: ((z_dnd_cha - 10) / 2).floor()
+  save_str: formula.str_mod + if(z_dnd_save_str, formula.prof_bonus, 0)
+  save_dex: formula.dex_mod + if(z_dnd_save_dex, formula.prof_bonus, 0)
+  save_con: formula.con_mod + if(z_dnd_save_con, formula.prof_bonus, 0)
+  save_int: formula.int_mod + if(z_dnd_save_int, formula.prof_bonus, 0)
+  save_wis: formula.wis_mod + if(z_dnd_save_wis, formula.prof_bonus, 0)
+  save_cha: formula.cha_mod + if(z_dnd_save_cha, formula.prof_bonus, 0)
+  passive_perception: 10 + formula.wis_mod + if(z_dnd_prof_perception, formula.prof_bonus, 0)
+  passive_investigation: 10 + formula.int_mod + if(z_dnd_prof_investigation, formula.prof_bonus, 0)
+  passive_insight: 10 + formula.wis_mod + if(z_dnd_prof_insight, formula.prof_bonus, 0)
+  spell_dc: if(z_dnd_class == "wizard" || z_dnd_class == "artificer", 8 + formula.prof_bonus + formula.int_mod, if(z_dnd_class == "cleric" || z_dnd_class == "druid" || z_dnd_class == "monk" || z_dnd_class == "ranger", 8 + formula.prof_bonus + formula.wis_mod, if(z_dnd_class == "bard" || z_dnd_class == "paladin" || z_dnd_class == "sorcerer" || z_dnd_class == "warlock", 8 + formula.prof_bonus + formula.cha_mod, 0)))
+  spell_atk: if(z_dnd_class == "wizard" || z_dnd_class == "artificer", formula.prof_bonus + formula.int_mod, if(z_dnd_class == "cleric" || z_dnd_class == "druid" || z_dnd_class == "monk" || z_dnd_class == "ranger", formula.prof_bonus + formula.wis_mod, if(z_dnd_class == "bard" || z_dnd_class == "paladin" || z_dnd_class == "sorcerer" || z_dnd_class == "warlock", formula.prof_bonus + formula.cha_mod, 0)))
+  hit_die: if(z_dnd_class == "barbarian", 12, if(z_dnd_class == "fighter" || z_dnd_class == "paladin" || z_dnd_class == "ranger", 10, if(z_dnd_class == "sorcerer" || z_dnd_class == "wizard", 6, 8)))
+properties:
+  z_dnd_name:
+    displayName: Character
+  z_dnd_armor_class:
+    displayName: AC
+  z_dnd_max_hit_points:
+    displayName: Max HP
+  z_dnd_temp_hit_points:
+    displayName: Tmp HP
+  z_dnd_speed:
+    displayName: Speed
+  z_dnd_level:
+    displayName: Lvl
+  formula.prof_bonus:
+    displayName: Proficiency
+  formula.save_str:
+    displayName: STR Save
+  formula.save_dex:
+    displayName: DEX Save
+  formula.save_con:
+    displayName: CON Save
+  formula.save_int:
+    displayName: INT Save
+  formula.save_wis:
+    displayName: WIS Save
+  formula.save_cha:
+    displayName: CHA Save
+  formula.passive_perception:
+    displayName: Passive Perception
+  formula.passive_investigation:
+    displayName: Passive Investigation
+  formula.passive_insight:
+    displayName: Passive Insight
+  formula.spell_dc:
+    displayName: Spell DC
+  formula.spell_atk:
+    displayName: Spell Hit
+  formula.hit_die:
+    displayName: Hit Die
+  z_dnd_death_successes:
+    displayName: Death S
+  z_dnd_death_failures:
+    displayName: Death F
+  note.z_dnd_name:
+    displayName: Character
+  note.z_dnd_armor_class:
+    displayName: AC
+  note.z_dnd_max_hit_points:
+    displayName: MAX HP
+  note.z_dnd_temp_hit_points:
+    displayName: Temp HP
+  note.z_dnd_speed:
+    displayName: Speed
+  note.z_dnd_level:
+    displayName: Level
+  note.z_dnd_death_successes:
+    displayName: Death Successes
+  note.z_dnd_death_failures:
+    displayName: Death Failures
+views:
+  - type: table
+    name: Combat
+    order:
+      - z_dnd_name
+      - z_dnd_armor_class
+      - z_dnd_max_hit_points
+      - z_dnd_temp_hit_points
+      - z_dnd_speed
+      - z_dnd_level
+      - formula.prof_bonus
+      - formula.save_str
+      - formula.save_dex
+      - formula.save_con
+      - formula.save_int
+      - formula.save_wis
+      - formula.save_cha
+      - formula.passive_perception
+      - formula.passive_investigation
+      - formula.passive_insight
+      - formula.spell_dc
+      - formula.spell_atk
+      - formula.hit_die
+      - z_dnd_death_successes
+      - z_dnd_death_failures
+    sort:
+      - property: z_dnd_name
+        direction: ASC
+      - property: z_dnd_death_failures
+        direction: ASC
+      - property: formula.spell_dc
+        direction: DESC
+    columnSize:
+      formula.prof_bonus: 73
+  - type: table
+    name: Filtered HP
+    order:
+      - z_dnd_name
+    rowHeight: medium
+  - type: table
+    name: Filtered Spell Table
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.spell_dc
+      - formula.spell_atk
+    sort: []
+    rowHeight: medium
+    columnSize:
+      formula.spell_dc: 249
+      formula.spell_atk: 103
+  - type: cards
+    name: Filtered Hit Die
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.hit_die
+    cardSize: 100

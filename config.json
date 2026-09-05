@@ -1,0 +1,58 @@
+{
+  "commitMsg": {
+    "types": [
+      "feat",
+      "fix",
+      "docs",
+      "refactor",
+      "test",
+      "chore",
+      "build",
+      "ci"
+    ],
+    "allowedScopes": null,
+    "maxHeaderLength": 72,
+    "lowercaseSubject": true,
+    "maxBodyLineLength": 100
+  },
+  "install": {
+    "sourceDir": "src",
+    "vaultDir": "",
+    "vaultSubdir": "5e Sheets"
+  },
+  "skipFiles": [
+    ".DS_Store",
+    "Thumbs.db",
+    ".gitkeep"
+  ],
+  "checks": {
+    "jsSyntax": {
+      "dir": "src",
+      "extensions": [
+        ".js",
+        ".mjs"
+      ],
+      "wrapAsFunctionBody": true
+    },
+    "frontmatter": {
+      "dir": "src",
+      "extensions": [
+        ".md"
+      ],
+      "required": [],
+      "forbidden": [
+        "id",
+        "tags"
+      ]
+    },
+    "scriptRefs": {
+      "templatesDir": "src",
+      "scriptsDir": "src",
+      "patterns": [
+        "adapter\\.read\\(`\\$\\{dir\\}([^`]+\\.m?js)`\\)",
+        "file:\\s*\"[^\"]*?([^/\"]+\\.m?js)\""
+      ],
+      "minRefs": 2
+    }
+  }
+}

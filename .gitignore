@@ -1,0 +1,9 @@
+.check-*/
+
+test-vault/
+
+.DS_Store
+Thumbs.db
+node_modules/
+
+config.local.json
