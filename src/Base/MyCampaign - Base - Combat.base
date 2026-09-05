@@ -144,3 +144,19 @@ views:
     order:
       - formula.hit_die
     cardSize: 100
+  - type: cards
+    name: Filtered Spell DC
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.spell_dc
+    cardSize: 80
+  - type: cards
+    name: Filtered Spell Hit
+    filters:
+      and:
+        - file.name.contains(this.file.name)
+    order:
+      - formula.spell_atk
+    cardSize: 80

@@ -38,7 +38,9 @@
   [data-view-name="Filtered Hit Die"],
   [data-view-name="Filtered Passive Insight"],
   [data-view-name="Filtered Passive Investigation"],
-  [data-view-name="Filtered Passive Perception"]
+  [data-view-name="Filtered Passive Perception"],
+  [data-view-name="Filtered Spell DC"],
+  [data-view-name="Filtered Spell Hit"]
 ) {
   display: inline-block !important;
   vertical-align: middle;
