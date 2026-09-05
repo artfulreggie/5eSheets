@@ -17,7 +17,6 @@
 | Weight | `INPUT[text:MyCampaign - CHARACTER TEMPLATE - Data#z_dnd_weight]` |
 | Eyes | `INPUT[text:MyCampaign - CHARACTER TEMPLATE - Data#z_dnd_eyes]` |
 | Hide | `INPUT[text:MyCampaign - CHARACTER TEMPLATE - Data#z_dnd_hide]` |
-| Speed | `INPUT[number:MyCampaign - CHARACTER TEMPLATE - Data#z_dnd_speed]` |
 | Languages | `INPUT[text:MyCampaign - CHARACTER TEMPLATE - Data#z_dnd_languages]` |
 
 ## Ability Scores
